@@ -8,6 +8,8 @@ async function execGit(cmd) {
 }
 
 async function run() {
+  const { NPM_TOKEN, NODE_AUTH_TOKEN } = process.env;
+  console.log(!!NPM_TOKEN, !!NODE_AUTH_TOKEN);
   const pkgInfo = require(`${process.cwd()}/package.json`);
   const registry = pkgInfo.publishConfig?.registry || 'https://registry.npmjs.org';
   core.setOutput('name', pkgInfo.name);
